@@ -3,7 +3,6 @@ package course
 import (
 	"fmt"
 	"net/http"
-	"net/url"
 	"time"
 
 	"github.com/juanjoaquin/back-g-domain/domain"
@@ -47,11 +46,11 @@ func (c *clientHTTP) Get(id string) (*domain.Course, error) {
 	//1. Le pasamos una Struct Course al Data
 	dataResponse := DataResponse{Data: &domain.Course{}}
 	//2. Usamos el package URL de GO
-	u := url.URL{}
-	//3. Mandamos el Path
-	u.Path += fmt.Sprintf("/courses/%s", id)
+	/* 	u := url.URL{}
+	   	//3. Mandamos el Path
+	   	u.Path += fmt.Sprintf("/courses/%s", id) */
 	//4. Ejecutamos el Get del Client del HTTP_CLIENT. Y le pasamos el path de la URL
-	reps := c.client.Get(u.String())
+	reps := c.client.Get(fmt.Sprintf("/courses/%s", id))
 	if reps.Err != nil {
 		return nil, reps.Err
 	}
