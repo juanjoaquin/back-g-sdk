@@ -22,5 +22,5 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println(user)
+	fmt.Println("user", user)
 }
